@@ -88,9 +88,17 @@ class LaptopControllerTest {
 
     @Test
     void deleteOneById() {
+        ResponseEntity<Void> response =
+                testRestTemplate.exchange("/api/laptops/1", HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
+
+        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
     }
 
     @Test
     void deleteAll() {
+        ResponseEntity<Void> response =
+                testRestTemplate.exchange("/api/laptops", HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
+
+        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
     }
 }
